@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <AssemblyName>api</AssemblyName>
+    <PackageId>BernardBr.PoCs.TransformacaoMensagem.API</PackageId>
+    <RootNamespace>BernardBr.PoCs.TransformacaoMensagem.API</RootNamespace>
+    <GenerateFullPaths>true</GenerateFullPaths>
+    <OutputType>Exe</OutputType>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Authors>Bernardo Esbérard</Authors>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <AssemblyTitle>BernardBr.PoCs.TransformacaoMensagem.API</AssemblyTitle>
+    <Description>
+      API responsável pela transformação de mensagens.
+    </Description>
+  </PropertyGroup>  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+</Project>
