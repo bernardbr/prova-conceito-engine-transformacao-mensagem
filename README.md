@@ -4,7 +4,7 @@ Repositório de PoC da construção de uma Engine de Transformação de mensagen
 
 ## Conceitos
 
-A ideia do projeto é criar uma API que receba arquivos XML ou JSON com formatos diversos, e que a mesma possa retornar uma estrutura padronizada com os dados relevantes do arquivo. Para impementação da PoC, resolvi utilizar o exemplo de CENSO estadual em que cada estado possui um formato distinto de arquivo.
+A ideia do projeto é criar uma API que receba arquivos XML ou JSON com formatos diversos, e que a mesma possa retornar uma estrutura padronizada com os dados relevantes do arquivo. Para implementação da PoC, resolvi utilizar o exemplo de CENSO estadual em que cada estado possui um formato distinto de arquivo.
 
 ### Exemplos de arquivos de entrada
 
