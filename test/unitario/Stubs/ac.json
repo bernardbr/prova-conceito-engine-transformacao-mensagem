@@ -1,0 +1,14 @@
+{
+  "cities": [
+    {
+      "name": "Rio Branco",
+      "population": 576589,
+      "neighborhoods": [
+        {
+          "name": "Habitasa",
+          "population": 7503
+        }
+      ]
+    }
+  ]
+}

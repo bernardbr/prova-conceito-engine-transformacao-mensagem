@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>core</AssemblyName>
+    <PackageId>BernardBr.PoCs.TransformacaoMensagem.Core</PackageId>
+    <RootNamespace>BernardBr.PoCs.TransformacaoMensagem.Core</RootNamespace>
+    <GenerateFullPaths>true</GenerateFullPaths>
+    <OutputType>Library</OutputType>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Authors>Bernardo Esbérard</Authors>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <AssemblyTitle>BernardBr.PoCs.TransformacaoMensagem.Core</AssemblyTitle>
+    <Description>&#xD;
+      Biblioteca detentora das regras de negócio de conversão.&#xD;
+    </Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2"/>
+  </ItemGroup>
+</Project>

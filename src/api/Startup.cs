@@ -1,10 +1,17 @@
 ﻿namespace BernardBr.PoCs.TransformacaoMensagem.API
 {
+    using System;
+    using System.IO;
+    using System.Reflection;
+    using BernardBr.PoCs.TransformacaoMensagem.API.Validators;
+    using FluentValidation;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Swashbuckle.AspNetCore.Swagger;
 
     /// <summary>
     /// Classe que é invocada na inicialização da API.
@@ -32,7 +39,35 @@
         /// <param name="services">A coeção de serviços que será configurada.</param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services
+                .AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddTransient<IValidator<IFormFile>, FormFileValidator>();                
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Title = "Transformação mensagem",
+                    Version = "v1",
+                    Description = "Esta API é um PoC para transformação de mensagem.",
+                    Contact = new Contact
+                    {
+                        Name = "Bernardo Esbérard",
+                        Url = "https://github.com/bernardbr"
+                    },
+                    License = new License
+                    {
+                        Name = "MIT License",
+                        Url = "https://github.com/bernardbr/prova-conceito-engine-transformacao-mensagem/blob/master/LICENSE"
+                    }
+                });
+
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "core.xml"));
+                c.EnableAnnotations();
+            });
         }
 
         /// <summary>
@@ -52,8 +87,13 @@
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-            app.UseMvc();
+            app.UseSwagger()
+            .UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Transformação mensagem V1");
+                    c.RoutePrefix = "docs";
+                })
+            .UseMvc();
         }
     }
 }

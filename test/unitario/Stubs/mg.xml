@@ -1,0 +1,29 @@
+<body>
+    <region>
+        <name>Triangulo Mineiro</name>
+        <cities>
+            <city>
+                <name>Uberlandia</name>
+                <population>700001</population>
+                <neighborhoods>
+                    <neighborhood>
+                        <name>Santa Monica</name>
+                        <zone>Zona Leste</zone>
+                        <population>13012</population>
+                    </neighborhood>
+                </neighborhoods>
+            </city>
+            <city>
+                <name>Uberaba</name>
+                <population>289376</population>
+                <neighborhoods>
+                    <neighborhood>
+                        <name>Abaeté</name>
+                        <zone>Centro</zone>
+                        <population>22690</population>
+                    </neighborhood>
+                </neighborhoods>
+            </city>
+        </cities>
+    </region>
+</body>

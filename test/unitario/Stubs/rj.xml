@@ -1,0 +1,29 @@
+<corpo>
+    <cidade>
+        <nome>Rio de Janeiro</nome>
+        <populacao>10345678</populacao>
+        <bairros>
+            <bairro>
+                <nome>Tijuca</nome>
+                <regiao>Zona Norte</regiao>
+                <populacao>135678</populacao>
+            </bairro>
+            <bairro>
+                <nome>Botafogo</nome>
+                <regiao>Zona Sul</regiao>
+                <populacao>105711</populacao>
+            </bairro>
+        </bairros>
+    </cidade>
+    <cidade>
+        <nome>Teresópolis</nome>
+        <populacao>182594</populacao>
+        <bairros>
+            <bairro>
+                <nome>Tijuca</nome>
+                <regiao>Centro</regiao>
+                <populacao>13678</populacao>
+            </bairro>
+        </bairros>
+    </cidade>
+</corpo>

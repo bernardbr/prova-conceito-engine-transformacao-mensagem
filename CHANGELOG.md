@@ -7,7 +7,14 @@ e este projeto segue o [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 ## [Unreleased]
 
-### Added
+- Testes unitários e integração (não foram commitados, pois estou organizando os mesmos).
+
+### [1.0.0]
+
+## Added
 
 - Endpoint com capacidade de receber um arquivo através de um POST com form-data retornando um formato padrão com os dados do arquivo.
 - Endpoint de configuração para transformação da estrutura do arquivo.
+- Inclusão de documentação com swagger.
+- Arquivo Dockerfile já configurado.
+- Disponibilizada imagem Docker no [DockerHub](https://cloud.docker.com/u/bernardbr/repository/docker/bernardbr/transformacao-mensagem).
