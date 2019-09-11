@@ -62,10 +62,6 @@ namespace BernardBr.PoCs.TransformacaoMensagem.API.Controllers
             {
                 return this.BadRequest(ex.Message);
             }
-            catch (Exception ex)
-            {
-                return this.Ok(ex);
-            }
         }
     }
 }
