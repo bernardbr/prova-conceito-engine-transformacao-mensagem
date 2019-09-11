@@ -136,5 +136,5 @@ cd .\src\api
 dotnet publish -c Release -o output
 docker build -t <seu-usuario>/transformacao-mensagem:<versao> .
 docker login
-docker push bernardbr/transformacao-mensagem
+docker push <seu-usuario>/transformacao-mensagem
 ```
