@@ -130,6 +130,8 @@ A API possui um `Dockerfile` para criação da imagem do container Docker. Para 
 Para realizar a criação da imagem docker em sua máquina basta após a publicação em `output` executar os seguites comandos:
 
 ```shell
+dotnet clean
+dotnet test
 cd .\src\api
 dotnet publish -c Release -o output
 docker build -t <seu-usuario>/transformacao-mensagem:<versao> .
