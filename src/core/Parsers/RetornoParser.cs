@@ -1,21 +1,23 @@
 namespace BernardBr.PoCs.TransformacaoMensagem.Core.Parsers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using BernardBr.PoCs.TransformacaoMensagem.Core.Models;
+    using BernardBr.PoCs.TransformacaoMensagem.Core.Config.Impl;
     using BernardBr.PoCs.TransformacaoMensagem.Core.Config;
+
     using Newtonsoft.Json.Linq;
-    using System.Xml;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
     using System.Collections.Concurrent;
+    using System.Linq;
+    using System.Xml;
+    using System;
 
     /// <summary>
     /// Parser para o retorno padrão.
     /// </summary>
     public class RetornoParser
     {
-        private readonly Configuracao configuracao;
+        private readonly IConfiguracao configuracao;
 
         /// <summary>
         /// Inicializa uma nova instância de <see cref="RetornoParser" />.

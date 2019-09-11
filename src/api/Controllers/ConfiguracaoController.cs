@@ -1,10 +1,11 @@
 namespace BernardBr.PoCs.TransformacaoMensagem.API.Controllers
 {
-    using BernardBr.PoCs.TransformacaoMensagem.Core.Parsers;
     using BernardBr.PoCs.TransformacaoMensagem.API.Utils;
     using Microsoft.AspNetCore.Mvc;
     using Swashbuckle.AspNetCore.Annotations;
-    using BernardBr.PoCs.TransformacaoMensagem.Core.Config;
+    using BernardBr.PoCs.TransformacaoMensagem.Core.Config.Impl;
+    using BernardBr.PoCs.TransformacaoMensagem.API.Models;
+    using BernardBr.PoCs.TransformacaoMensagem.API.Parsers;
 
     /// <summary>
     /// Controller responsável pela configuração das transformações de mensagens.
@@ -21,11 +22,11 @@ namespace BernardBr.PoCs.TransformacaoMensagem.API.Controllers
         [HttpPost]
         public IActionResult Configurar(
             [FromRoute]
-            string uf, 
+            string uf,
             [SwaggerParameter(Required = true)]
-            [FromBody]Configuracao configuracao)
+            [FromBody]ConfiguracaoContrato configuracao)
         {
-            ConfiguracaoPool.AdicionarOuAtualizarConfiguracao(uf, configuracao);
+            ConfiguracaoPool.AdicionarOuAtualizarConfiguracao(uf, ConfiguracaoParser.Parse(configuracao));
             return this.Ok();
         }
     }

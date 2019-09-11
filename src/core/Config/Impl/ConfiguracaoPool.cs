@@ -1,14 +1,15 @@
-namespace BernardBr.PoCs.TransformacaoMensagem.Core.Config
+namespace BernardBr.PoCs.TransformacaoMensagem.Core.Config.Impl
 {
     using System;
     using System.Collections.Concurrent;
+    using BernardBr.PoCs.TransformacaoMensagem.Core.Exceptions;
 
     /// <summary>
     /// Classe que representa as configurações do parser de resultado.
     /// </summary>
-    public class ConfiguracaoPool
+    public sealed class ConfiguracaoPool
     {
-        private static readonly ConcurrentDictionary<string, Configuracao> configuracoes;
+        private static readonly ConcurrentDictionary<string, IConfiguracao> configuracoes;
 
         /// <summary>
         /// Esconde o construtor padrão de <see cref="ConfiguracaoPool"/>.
@@ -20,7 +21,7 @@ namespace BernardBr.PoCs.TransformacaoMensagem.Core.Config
         /// </summary>
         static ConfiguracaoPool()
         {
-            configuracoes = new ConcurrentDictionary<string, Configuracao>();
+            configuracoes = new ConcurrentDictionary<string, IConfiguracao>();
         }
 
         /// <summary>
@@ -29,11 +30,11 @@ namespace BernardBr.PoCs.TransformacaoMensagem.Core.Config
         /// <param name="uf">A uf da qual se deseja a configuração.</param>
         /// <returns>A instância de <see cref="ConfiguracaoPool"/> da uf solicitada.</returns>
         /// <exception cref="Exception">Caso a uf não esteja configurada.</exception>
-        public static Configuracao ObterConfiguracao(string uf)
+        public static IConfiguracao ObterConfiguracao(string uf)
         {
             if (!configuracoes.TryGetValue(uf, out var configuracao))
             {
-                throw new Exception("UF não configurada");
+                throw new UfNaoConfiguradaException(uf);
             }
 
             return configuracao;
@@ -44,7 +45,7 @@ namespace BernardBr.PoCs.TransformacaoMensagem.Core.Config
         /// </summary>
         /// <param name="uf">A uf da configuração.</param>
         /// <param name="configuracao">A configuração.</param>
-        public static void AdicionarOuAtualizarConfiguracao(string uf, Configuracao configuracao)
+        public static void AdicionarOuAtualizarConfiguracao(string uf, IConfiguracao configuracao)
         {
             configuracoes.AddOrUpdate(uf, configuracao, (key, old) => configuracao);
         }

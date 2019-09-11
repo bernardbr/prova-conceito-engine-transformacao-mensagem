@@ -1,4 +1,4 @@
-# PoC para Engine de transformação de mensagens.
+# PoC para Engine de transformação de mensagens
 
 Repositório de PoC da construção de uma Engine de Transformação de mensagens.
 
@@ -122,3 +122,17 @@ Para que seja possível transformar cada um dos tipos de arquivo, estabeleceu-se
 Desta forma será possível definir a regra de obtenção dos dados dos arquivos de cada estado utilizando-se o endpoint: `<servidor:porta>/api/v1/censo/rj/configuracoes`.
 
 A estrutura de cada um dos endpoints podem ser conferidas em: `<servidor:porta>/docs`. Apesar de não gostar de utilizar muitas `annotations` nas classes, tomei a decisão de utilizar o [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) para agilizar o processo de documentação.
+
+## Docker
+
+A API possui um `Dockerfile` para criação da imagem do container Docker. Para tal, basta acessar o diretório do projeto da API `src\api` e executar a publicação para o diretório `output`. Não foi criado um `docker-compose` pois a ideia é que futuramente utilizemos um CI estilo [Travis](https://travis-ci.org/) que será responsável por todo o trâmite de testes, validação de cobertura, build e compilação do Docker através do `docker-cli`.
+
+Para realizar a criação da imagem docker em sua máquina basta após a publicação em `output` executar os seguites comandos:
+
+```shell
+cd .\src\api
+dotnet publish -c Release -o output
+docker build -t <seu-usuario>/transformacao-mensagem:<versao> .
+docker login
+docker push bernardbr/transformacao-mensagem
+```

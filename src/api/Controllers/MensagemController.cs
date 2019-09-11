@@ -11,6 +11,8 @@ namespace BernardBr.PoCs.TransformacaoMensagem.API.Controllers
     using Newtonsoft.Json.Linq;
     using Swashbuckle.AspNetCore.Annotations;
     using FluentValidation;
+    using System;
+    using BernardBr.PoCs.TransformacaoMensagem.Core.Exceptions;
 
     /// <summary>
     /// 
@@ -43,16 +45,27 @@ namespace BernardBr.PoCs.TransformacaoMensagem.API.Controllers
             [SwaggerParameter(Required = true)]
             [FromForm]IFormFile arquivo)
         {
-            var validation = validadorFormFile.Validate(arquivo);
-            if (!validation.IsValid)
+            try
             {
-                return this.BadRequest(validation.Errors);
+                var validation = validadorFormFile.Validate(arquivo);
+                if (!validation.IsValid)
+                {
+                    return this.BadRequest(validation.Errors);
+                }
+
+                var retornoParser = new RetornoParser(uf);
+                var retorno = retornoParser.Parse(arquivo.ContentType, await arquivo.LerConteudo());
+
+                return this.Ok(retorno);
             }
-
-            var retornoParser = new RetornoParser(uf);
-            var retorno = retornoParser.Parse(arquivo.ContentType, await arquivo.LerConteudo());
-
-            return this.Ok(retorno);
+            catch (UfNaoConfiguradaException ex)
+            {
+                return this.BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return this.Ok(ex);
+            }
         }
     }
 }
